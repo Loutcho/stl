@@ -16,8 +16,8 @@ public class MakeSTL {
 	public static void main(String[] args) throws Exception {
 		System.setOut(new PrintStream(new File("C:\\Users\\Luc\\Desktop\\fichier.stl")));
 		
-		// new MakeSTL(new F01(), -3.0, +3.0, -3.0, +3.0, -1.5, 100, 100, 10).run();
-		new MakeSTL(new F02(), -3.0, +3.0, -3.0, +3.0, -0.50, 300, 300, 100).run();
+		new MakeSTL(new F01(), -3.0, +3.0, -3.0, +3.0, -1.5, 100, 100, 10).run();
+		// new MakeSTL(new F02(), -3.0, +3.0, -3.0, +3.0, -0.50, 300, 300, 100).run();
 	}
 	
 	private BiFunction<Double, Double, Double> function;
@@ -110,22 +110,14 @@ public class MakeSTL {
 	private void surface() {
 		for (int ix = 0; ix < nx; ix ++) {
 			for (int iy = 0; iy < ny; iy ++) {
-				Sommet a = new Sommet();
-				a.x = fx(ix);
-				a.y = fy(iy);
-				a.z = f(a.x, a.y);
-				Sommet b = new Sommet();
-				b.x = fx(ix + 1);
-				b.y = fx(iy + 1);
-				b.z = f(b.x, b.y);
-				Sommet c = new Sommet();
-				c.x = a.x;
-				c.y = b.y;
-				c.z = f(c.x, c.y);
-				Sommet d = new Sommet();
-				d.x = b.x;
-				d.y = a.y;
-				d.z = f(d.x, d.y);
+				double ax = fx(ix);
+				double ay = fy(iy);
+				double bx = fx(ix + 1);
+				double by = fx(iy + 1); // TODO: paraît louche ; ça serait-y pas plutôt fy(iy + 1) ?
+				Sommet a = new Sommet(ax, ay, f(ax, ay));
+				Sommet b = new Sommet(bx, by, f(bx, by));
+				Sommet c = new Sommet(ax, by, f(ax, by));
+				Sommet d = new Sommet(bx, ay, f(bx, ay));
 				triangle(a, b, c);
 				triangle(b, a, d);
 			}
@@ -142,22 +134,10 @@ public class MakeSTL {
 			double z2 = f(x, y2);
 			
 			for (int iz = 0; iz < nz; iz ++) {
-				Sommet a = new Sommet();
-				a.x = x;
-				a.y = y1;
-				a.z = fz(iz, z1); 
-				Sommet b = new Sommet();
-				b.x = x;
-				b.y = y2;
-				b.z = fz(iz + 1, z2);
-				Sommet c = new Sommet();
-				c.x = x;
-				c.y = y1;
-				c.z = fz(iz + 1, z1);
-				Sommet d = new Sommet();
-				d.x = x;
-				d.y = y2;
-				d.z = fz(iz, z2);
+				Sommet a = new Sommet(x, y1, fz(iz, z1));
+				Sommet b = new Sommet(x, y2, fz(iz + 1, z2));
+				Sommet c = new Sommet(x, y1, fz(iz + 1, z1));
+				Sommet d = new Sommet(x, y2, fz(iz, z2));
 				triangle(a, b, c);
 				triangle(b, a, d);
 			}
@@ -174,22 +154,10 @@ public class MakeSTL {
 			double z2 = f(x, y2);
 			
 			for (int iz = 0; iz < nz; iz ++) {
-				Sommet a = new Sommet();
-				a.x = x;
-				a.y = y1;
-				a.z = fz(iz, z1); 
-				Sommet b = new Sommet();
-				b.x = x;
-				b.y = y2;
-				b.z = fz(iz + 1, z2);
-				Sommet c = new Sommet();
-				c.x = x;
-				c.y = y1;
-				c.z = fz(iz + 1, z1);
-				Sommet d = new Sommet();
-				d.x = x;
-				d.y = y2;
-				d.z = fz(iz, z2);
+				Sommet a = new Sommet(x, y1, fz(iz, z1));
+				Sommet b = new Sommet(x, y2, fz(iz + 1, z2));
+				Sommet c = new Sommet(x, y1, fz(iz + 1, z1));
+				Sommet d = new Sommet(x, y2, fz(iz, z2));
 				triangle(a, b, c);
 				triangle(b, a, d);
 			}
@@ -206,22 +174,10 @@ public class MakeSTL {
 			double z2 = f(x2, y);
 			
 			for (int iz = 0; iz < nz; iz ++) {
-				Sommet a = new Sommet();
-				a.x = x1;
-				a.y = y;
-				a.z = fz(iz, z1); 
-				Sommet b = new Sommet();
-				b.x = x2;
-				b.y = y;
-				b.z = fz(iz + 1, z2);
-				Sommet c = new Sommet();
-				c.x = x1;
-				c.y = y;
-				c.z = fz(iz + 1, z1);
-				Sommet d = new Sommet();
-				d.x = x2;
-				d.y = y;
-				d.z = fz(iz, z2);
+				Sommet a = new Sommet(x1, y, fz(iz, z1));
+				Sommet b = new Sommet(x2, y, fz(iz + 1, z2));
+				Sommet c = new Sommet(x1, y, fz(iz + 1, z1));
+				Sommet d = new Sommet(x2, y, fz(iz, z2));
 				triangle(a, b, c);
 				triangle(b, a, d);
 			}
@@ -238,22 +194,10 @@ public class MakeSTL {
 			double z2 = f(x2, y);
 			
 			for (int iz = 0; iz < nz; iz ++) {
-				Sommet a = new Sommet();
-				a.x = x1;
-				a.y = y;
-				a.z = fz(iz, z1); 
-				Sommet b = new Sommet();
-				b.x = x2;
-				b.y = y;
-				b.z = fz(iz + 1, z2);
-				Sommet c = new Sommet();
-				c.x = x1;
-				c.y = y;
-				c.z = fz(iz + 1, z1);
-				Sommet d = new Sommet();
-				d.x = x2;
-				d.y = y;
-				d.z = fz(iz, z2);
+				Sommet a = new Sommet(x1, y, fz(iz, z1));
+				Sommet b = new Sommet(x2, y, fz(iz + 1, z2));
+				Sommet c = new Sommet(x1, y, fz(iz + 1, z1));
+				Sommet d = new Sommet(x2, y, fz(iz, z2));
 				triangle(a, b, c);
 				triangle(b, a, d);
 			}
