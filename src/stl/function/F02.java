@@ -1,4 +1,4 @@
-package stl;
+package stl.function;
 
 import java.util.function.BiFunction;
 
