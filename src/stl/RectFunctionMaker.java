@@ -1,15 +1,11 @@
 package stl;
 
-import java.util.Locale;
-
 public class RectFunctionMaker {
 
 	private RectFunction rf;
 	
 	public void make(RectFunction rf) {
 		this.rf = rf;
-		Locale.setDefault(new Locale("en", "US")); // Appel servant à ce que le séparateur décimal soit "." dans les nombres flottants 
-		
 		String name = "toto";
 		System.out.printf("solid \"%s\"\n", name);
 		plancher();

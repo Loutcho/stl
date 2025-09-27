@@ -8,11 +8,14 @@ package stl;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.util.Locale;
 
 public class MakeSTL {
 
 	public static void main(String[] args) throws Exception {
+		Locale.setDefault(Locale.US);
 		System.setOut(new PrintStream(new File("C:\\Users\\Luc\\Desktop\\fichier.stl")));
+
 		new MakeSTL().make(stl.constru.Constru01.CONSTRU);
 		// new MakeSTL().make(stl.constru.Constru02.CONSTRU);
 	}
