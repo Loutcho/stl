@@ -70,7 +70,7 @@ public class RectFunctionMaker {
 				double ax = fx(ix);
 				double ay = fy(iy);
 				double bx = fx(ix + 1);
-				double by = fx(iy + 1); // TODO: paraît louche ; ça serait-y pas plutôt fy(iy + 1) ?
+				double by = fy(iy + 1);
 				Sommet a = new Sommet(ax, ay, f(ax, ay));
 				Sommet b = new Sommet(bx, by, f(bx, by));
 				Sommet c = new Sommet(ax, by, f(ax, by));
