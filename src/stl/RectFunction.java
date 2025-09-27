@@ -6,6 +6,7 @@ import java.util.function.BiFunction;
  * A RectFunction = a function f(x, y), five bounds and three numbers driving precision
  */
 public class RectFunction {
+
 	public BiFunction<Double, Double, Double> function;
 	public Double xMin;
 	public Double xMax;
@@ -15,8 +16,13 @@ public class RectFunction {
 	public Integer nx;
 	public Integer ny;
 	public Integer nz;
+
 	public RectFunction(
-			BiFunction<Double, Double, Double> function, Double xMin, Double xMax, Double yMin, Double yMax, Double zMin, Integer nx, Integer ny, Integer nz) {
+			BiFunction<Double, Double, Double> function,
+			Double xMin, Double xMax,
+			Double yMin, Double yMax,
+			Double zMin,
+			Integer nx, Integer ny, Integer nz) {
 		super();
 		this.function = function;
 		this.xMin = xMin;

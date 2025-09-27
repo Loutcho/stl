@@ -16,11 +16,7 @@ public class MakeSTL {
 		Locale.setDefault(Locale.US);
 		System.setOut(new PrintStream(new File("C:\\Users\\Luc\\Desktop\\fichier.stl")));
 
-		new MakeSTL().make(stl.constru.Constru01.CONSTRU);
-		// new MakeSTL().make(stl.constru.Constru02.CONSTRU);
-	}
-	
-	public void make(RectFunction rectFunction) {
-		new RectFunctionMaker().make(rectFunction);
+		new RectFunctionMaker().make(stl.constru.Constru01.CONSTRU);
+		// new RectFunctionMaker().make(stl.constru.Constru02.CONSTRU);
 	}
 }
