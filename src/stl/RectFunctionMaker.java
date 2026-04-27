@@ -47,7 +47,7 @@ public class RectFunctionMaker {
 				a.z = rf.zMin;
 				Sommet b = new Sommet();
 				b.x = fx(ix + 1);
-				b.y = fx(iy + 1);
+				b.y = fy(iy + 1);
 				b.z = rf.zMin;
 				Sommet c = new Sommet();
 				c.x = a.x;
