@@ -14,7 +14,7 @@ public class MakeSTL {
 
 	public static void main(String[] args) throws Exception {
 		Locale.setDefault(Locale.US);
-		RectFunction constru = stl.constru.Constru04.CONSTRU;
+		RectFunction constru = stl.constru.Constru05.CONSTRU;
 		System.setOut(new PrintStream(new File("C:\\Users\\Luc\\Desktop\\" + constru.getClass().getName() + ".stl")));
 		new RectFunctionMaker().make(constru);
 	}
