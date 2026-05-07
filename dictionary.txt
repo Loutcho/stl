@@ -1,0 +1,4 @@
+directrix
+parametrize
+generatrices
+cos
