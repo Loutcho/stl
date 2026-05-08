@@ -1,7 +1,6 @@
 package stl;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * A BiparameterizedFunction = the information needed to build a solid (almost a right-prism). More precisely, the solid has:
@@ -31,8 +30,8 @@ public class BiparameterizedFunction {
 
 	public String name;
 	public BiFunction<Double, Double, Double> function;
-	public Function<Double, Double> R;
-	public Function<Double, Double> G;
+	public BiFunction<Double, Double, Double> R;
+	public BiFunction<Double, Double, Double> G;
 	public Double zMin; // zMin must be provided smaller than the inf of all the f(x, y) on the domain delimited by the directrix.
 	public Integer nr; // number of subdivisions according to r: r will take successively the (nr + 1) values (ir / nr), ir from 0 to nr.
 	public Integer nθ; // number of subdivisions according to θ: θ will take successively the (nθ + 1) values (iθ / nθ) * 2π, iθ from 0 to nθ. 
@@ -40,8 +39,8 @@ public class BiparameterizedFunction {
 	public BiparameterizedFunction(
 			String name,
 			BiFunction<Double, Double, Double> function,
-			Function<Double, Double> R,
-			Function<Double, Double> G,
+			BiFunction<Double, Double, Double> R,
+			BiFunction<Double, Double, Double> G,
 			Double zMin,
 			Integer nr, Integer nθ) {
 		super();

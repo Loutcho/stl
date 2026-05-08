@@ -79,8 +79,8 @@ public class BiparameterizedFunctionMaker {
 	}
 	
 	private Sommet mkSommet(boolean floor, double r, double θ) {
-		double rr = bpf.R.apply(r);
-		double gθ = bpf.G.apply(θ);
+		double rr = bpf.R.apply(r, θ);
+		double gθ = bpf.G.apply(r, θ);
 		double x = rr * Math.cos(gθ);
 		double y = rr * Math.sin(gθ);
 		double z = floor ? bpf.zMin : bpf.function.apply(x, y);
