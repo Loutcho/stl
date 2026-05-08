@@ -36,7 +36,6 @@ public class BiparameterizedFunction {
 	public Double zMin; // zMin must be provided smaller than the inf of all the f(x, y) on the domain delimited by the directrix.
 	public Integer nr; // number of subdivisions according to r: r will take successively the (nr + 1) values (ir / nr), ir from 0 to nr.
 	public Integer nθ; // number of subdivisions according to θ: θ will take successively the (nθ + 1) values (iθ / nθ) * 2π, iθ from 0 to nθ. 
-	public Integer nz; // number of subdivisions according to z: z will take successively the (nz + 1) values from zMin to the relevant f(x, y).
 
 	public BiparameterizedFunction(
 			String name,
@@ -44,7 +43,7 @@ public class BiparameterizedFunction {
 			Function<Double, Double> R,
 			Function<Double, Double> G,
 			Double zMin,
-			Integer nr, Integer nθ, Integer nz) {
+			Integer nr, Integer nθ) {
 		super();
 		this.name = name;
 		this.function = function;
@@ -53,6 +52,5 @@ public class BiparameterizedFunction {
 		this.zMin = zMin;
 		this.nr = nr;
 		this.nθ = nθ;
-		this.nz = nz;
 	}
 }

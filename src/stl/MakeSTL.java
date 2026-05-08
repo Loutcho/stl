@@ -14,7 +14,7 @@ public class MakeSTL {
 
 	public static void main(String[] args) throws Exception {
 		Locale.setDefault(Locale.US);
-		// System.setOut(new PrintStream(new File("C:\\Users\\Luc\\Desktop\\xxx.stl")));
+		System.setOut(new PrintStream(new File("C:\\Users\\Luc\\Desktop\\xxx.stl")));
 		new BiparameterizedFunctionMaker(stl.constru.Constru06.CONSTRU).make();
 	}
 }
