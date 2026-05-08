@@ -29,6 +29,7 @@ import java.util.function.Function;
  */
 public class BiparameterizedFunction {
 
+	public String name;
 	public BiFunction<Double, Double, Double> function;
 	public Function<Double, Double> R;
 	public Function<Double, Double> G;
@@ -38,12 +39,14 @@ public class BiparameterizedFunction {
 	public Integer nz; // number of subdivisions according to z: z will take successively the (nz + 1) values from zMin to the relevant f(x, y).
 
 	public BiparameterizedFunction(
+			String name,
 			BiFunction<Double, Double, Double> function,
 			Function<Double, Double> R,
 			Function<Double, Double> G,
 			Double zMin,
 			Integer nr, Integer nθ, Integer nz) {
 		super();
+		this.name = name;
 		this.function = function;
 		this.R = R;
 		this.G = G;

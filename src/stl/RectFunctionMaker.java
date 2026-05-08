@@ -3,9 +3,12 @@ package stl;
 public class RectFunctionMaker {
 
 	private RectFunction rf;
-	
-	public void make(RectFunction rf) {
+
+	public RectFunctionMaker(RectFunction rf) {
 		this.rf = rf;
+	}
+
+	public void make() {
 		String name = "toto";
 		System.out.printf("solid \"%s\"\n", name);
 		plancher();
@@ -57,8 +60,8 @@ public class RectFunctionMaker {
 				d.x = b.x;
 				d.y = a.y;
 				d.z = rf.zMin;
-				triangle(a, b, d);
-				triangle(b, a, c);
+				StlUtils.triangle(a, b, d);
+				StlUtils.triangle(b, a, c);
 			}
 		}
 	}
@@ -75,8 +78,8 @@ public class RectFunctionMaker {
 				Sommet b = new Sommet(bx, by, f(bx, by));
 				Sommet c = new Sommet(ax, by, f(ax, by));
 				Sommet d = new Sommet(bx, ay, f(bx, ay));
-				triangle(a, b, c);
-				triangle(b, a, d);
+				StlUtils.triangle(a, b, c);
+				StlUtils.triangle(b, a, d);
 			}
 		}
 	}
@@ -95,8 +98,8 @@ public class RectFunctionMaker {
 				Sommet b = new Sommet(x, y2, fz(iz + 1, z2));
 				Sommet c = new Sommet(x, y1, fz(iz + 1, z1));
 				Sommet d = new Sommet(x, y2, fz(iz, z2));
-				triangle(a, b, c);
-				triangle(b, a, d);
+				StlUtils.triangle(a, b, c);
+				StlUtils.triangle(b, a, d);
 			}
 		}
 	}
@@ -115,8 +118,8 @@ public class RectFunctionMaker {
 				Sommet b = new Sommet(x, y2, fz(iz + 1, z2));
 				Sommet c = new Sommet(x, y1, fz(iz + 1, z1));
 				Sommet d = new Sommet(x, y2, fz(iz, z2));
-				triangle(a, b, c);
-				triangle(b, a, d);
+				StlUtils.triangle(a, b, c);
+				StlUtils.triangle(b, a, d);
 			}
 		}
 	}
@@ -135,8 +138,8 @@ public class RectFunctionMaker {
 				Sommet b = new Sommet(x2, y, fz(iz + 1, z2));
 				Sommet c = new Sommet(x1, y, fz(iz + 1, z1));
 				Sommet d = new Sommet(x2, y, fz(iz, z2));
-				triangle(a, b, c);
-				triangle(b, a, d);
+				StlUtils.triangle(a, b, c);
+				StlUtils.triangle(b, a, d);
 			}
 		}
 	}
@@ -155,26 +158,9 @@ public class RectFunctionMaker {
 				Sommet b = new Sommet(x2, y, fz(iz + 1, z2));
 				Sommet c = new Sommet(x1, y, fz(iz + 1, z1));
 				Sommet d = new Sommet(x2, y, fz(iz, z2));
-				triangle(a, b, c);
-				triangle(b, a, d);
+				StlUtils.triangle(a, b, c);
+				StlUtils.triangle(b, a, d);
 			}
 		}
-	}
-	
-	// Génère la description de la face triangulaire de sommets a, b, c fournis
-	private void triangle(Sommet a, Sommet b, Sommet c) {
-		double x = 0.0, y = 0.0, z = 0.0; // Peut être amélioré en calculant la normale, mais l'outil que j'utilise pour imprimer n'en a pas besoin
-		System.out.printf("  facet normal %f %f %f\n", x, y, z);
-		System.out.printf("    outer loop\n");
-		sommet(a);
-		sommet(b);
-		sommet(c);
-		System.out.printf("    endloop\n");
-		System.out.printf("  endfacet\n");
-	}
-	
-	// Génère la description d'un sommet
-	private void sommet(Sommet s) {
-		System.out.printf("      vertex %f %f %f\n", s.x, s.y, s.z);
 	}
 }
